@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kami Kreatif membantu UMKM dan bisnis digital dengan layanan pembuatan website, digital marketing, dan software tools siap pakai. Konsultasi gratis sekarang!">
+    <meta name="keywords" content="UMKM, Jasa Website, Digital Marketing, Software Tools, Kami Kreatif">
+    <meta name="author" content="Kami Kreatif">
+    <meta property="og:title" content="Kami Kreatif – Solusi Digital Berbasis Empati">
+    <meta property="og:description" content="Website, Marketing, dan Tools Digital Siap Pakai untuk Bisnis Anda.">
+    <meta property="og:image" content="https://placehold.co/1200x630/001F3F/FFFFFF?text=Kami+Kreatif">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kamikreatif.com">
+    
+    <title>Kami Kreatif – Website, Marketing & Tools Digital</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/logo.png">
+
+    <style>
+        /* Menggunakan font Inter dari Google Fonts */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #001F3F; /* Warna Navy sebagai default */
+        }
+
+        /* Animasi fade-in saat scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Navigasi aktif */
+        .nav-link.active {
+            color: #FF6600;
+            font-weight: 600;
+        }
+
+        /* Efek hover untuk kartu */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        /* Animasi pulse untuk tombol CTA */
+        .animate-pulse-bright {
+            animation: pulse-bright 2s infinite;
+        }
+        @keyframes pulse-bright {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 102, 0, 0);
+            }
+        }
+        
+        /* Transisi untuk menu mobile */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 antialiased">
+
+    <!-- Navigasi -->
+    <nav id="main-nav" class="fixed w-full bg-white/80 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center px-6 transition-all duration-300" style="padding-top: 1rem; padding-bottom: 1rem;">
+            <a href="#" class="flex items-center">
+                <img src="/assets/logo.png" alt="Logo Kami Kreatif" class="h-8 mr-2" onerror="this.style.display='none'">
+                <span class="text-2xl font-bold text-[#001F3F]">Kami Kreatif</span>
+            </a>
+            
+            <!-- Menu Desktop -->
+            <ul class="hidden md:flex items-center space-x-8">
+                <li><a href="#hero" class="nav-link hover:text-[#FF6600] transition-colors">Home</a></li>
+                <li><a href="#services" class="nav-link hover:text-[#FF6600] transition-colors">Layanan</a></li>
+                <li><a href="#portfolio" class="nav-link hover:text-[#FF6600] transition-colors">Portfolio</a></li>
+                <li><a href="#pricing" class="nav-link hover:text-[#FF6600] transition-colors">Harga</a></li>
+                <li><a href="#contact-form" class="bg-[#FF6600] text-white px-5 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all">Mulai Proyek</a></li>
+            </ul>
+
+            <!-- Tombol Menu Mobile -->
+            <button id="menu-btn" class="md:hidden z-[101]">
+                 <svg id="menu-open-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                 <svg id="menu-close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Menu Mobile Overlay -->
+    <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-[99]"></div>
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white z-[100] shadow-xl p-8">
+        <ul class="flex flex-col space-y-8 text-xl text-left mt-10">
+            <li><a href="#hero" class="mobile-nav-link hover:text-[#FF6600]">Home</a></li>
+            <li><a href="#services" class="mobile-nav-link hover:text-[#FF6600]">Layanan</a></li>
+            <li><a href="#portfolio" class="mobile-nav-link hover:text-[#FF6600]">Portfolio</a></li>
+            <li><a href="#pricing" class="mobile-nav-link hover:text-[#FF6600]">Harga</a></li>
+            <li><a href="#contact-form" class="mt-8 bg-[#FF6600] text-white px-6 py-3 rounded-lg font-semibold inline-block">Mulai Proyek</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-32 pb-20 bg-gradient-to-br from-[#001F3F] to-[#003366] text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="relative container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">90% UMKM Gagal Go Digital. <br class="hidden md:block"> Pastikan Bisnis Anda Tidak Termasuk.</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-200">Website Profesional, Digital Marketing Cerdas, dan Tools Bisnis Siap Pakai. Mulai dari Rp1 Jutaan.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#contact-form" class="bg-[#FF6600] text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transform hover:scale-105 transition-all w-full sm:w-auto animate-pulse-bright">Konsultasi Gratis Sekarang</a>
+                <a href="#portfolio" class="border-2 border-white px-8 py-3 rounded-lg hover:bg-white hover:text-[#001F3F] transition-colors w-full sm:w-auto">Lihat Portofolio Kami</a>
+            </div>
+            <div class="mt-12 flex justify-center items-center space-x-4 text-sm">
+                 <div class="flex items-center gap-1">
+                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    <span>4.9/5 • 50+ Ulasan</span>
+                </div>
+                <span class="text-gray-400">|</span>
+                <span>“Luar biasa!” • “Santai dan profesional.”</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain & Gain Section -->
+    <section id="paingain" class="py-20 bg-white fade-in-section">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Dari Masalah Menjadi Peluang</h2>
+                <p class="mt-3 text-lg text-gray-600 max-w-2xl mx-auto">Anda mungkin menghadapi tantangan ini. Kami punya solusinya.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="bg-red-50 p-8 rounded-xl border border-red-200 card-hover">
+                    <h3 class="text-2xl font-bold mb-4 text-red-800">Masalah Umum Bisnis</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="text-red-500 mr-3 mt-1">❌</span> Website sepi pengunjung dan tidak menghasilkan.</li>
+                        <li class="flex items-start"><span class="text-red-500 mr-3 mt-1">❌</span> Anggaran marketing habis tanpa hasil yang jelas.</li>
+                        <li class="flex items-start"><span class="text-red-500 mr-3 mt-1">❌</span> Operasional bisnis manual dan memakan waktu.</li>
+                        <li class="flex items-start"><span class="text-red-500 mr-3 mt-1">❌</span> Bingung memulai transformasi digital dari mana.</li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 p-8 rounded-xl border border-green-200 card-hover">
+                    <h3 class="text-2xl font-bold mb-4 text-green-800">Solusi dari Kami Kreatif</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✅</span> Website modern, cepat, dan SEO-friendly.</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✅</span> Iklan digital terukur dengan ROI yang jelas.</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✅</span> Tools & software untuk otomatisasi bisnis Anda.</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✅</span> Strategi digital yang dipandu dari awal hingga akhir.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Highlight -->
+    <section id="services" class="py-20 bg-gray-50 fade-in-section">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Layanan Unggulan Kami</h2>
+                <p class="mt-3 text-lg text-gray-600 max-w-2xl mx-auto">Tiga pilar utama untuk mengakselerasi bisnis Anda.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Service Card 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center card-hover">
+                    <div class="bg-[#FF6600] text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Pembuatan Website</h3>
+                    <p class="text-gray-600">Dari company profile hingga toko online, kami buatkan website yang tidak hanya indah, tapi juga menjual.</p>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center card-hover">
+                    <div class="bg-[#FF6600] text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Digital Marketing</h3>
+                    <p class="text-gray-600">Kampanye iklan Google, Meta & TikTok yang terkelola secara profesional untuk hasil yang terukur.</p>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center card-hover">
+                    <div class="bg-[#FF6600] text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Tools & Software</h3>
+                    <p class="text-gray-600">Otomatisasi bisnis dengan tools siap pakai seperti CRM, kasir, atau software custom sesuai kebutuhan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white fade-in-section">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Portfolio & Studi Kasus</h2>
+                <p class="mt-3 text-lg text-gray-600">Kami bangga dengan hasil kerja kami. Berikut beberapa di antaranya.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="group cursor-pointer portfolio-item card-hover" data-title="Kopi Senja - Website & Branding" data-desc="Kami membantu Kopi Senja membangun identitas brand yang kuat dan website e-commerce yang meningkatkan penjualan online mereka sebesar 200%." data-img="https://placehold.co/600x400/A0522D/FFFFFF?text=Kopi+Senja">
+                    <div class="relative rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://placehold.co/600x400/A0522D/FFFFFF?text=Kopi+Senja" alt="Portfolio Kopi Senja" class="w-full h-60 object-cover transform group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <p class="text-white text-lg font-bold">Lihat Detail</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Kopi Senja</h3>
+                    <p class="text-gray-500">Website & Branding</p>
+                </div>
+                <!-- Portfolio Item 2 -->
+                <div class="group cursor-pointer portfolio-item card-hover" data-title="CleanSweep - Aplikasi Booking" data-desc="Mengembangkan aplikasi mobile untuk layanan kebersihan on-demand, memudahkan penjadwalan dan pembayaran bagi ribuan pengguna." data-img="https://placehold.co/600x400/1E90FF/FFFFFF?text=CleanSweep">
+                    <div class="relative rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://placehold.co/600x400/1E90FF/FFFFFF?text=CleanSweep" alt="Portfolio CleanSweep" class="w-full h-60 object-cover transform group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <p class="text-white text-lg font-bold">Lihat Detail</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">CleanSweep</h3>
+                    <p class="text-gray-500">Aplikasi Booking</p>
+                </div>
+                <!-- Portfolio Item 3 -->
+                <div class="group cursor-pointer portfolio-item card-hover" data-title="Batik Lestari - Digital Marketing" data-desc="Meningkatkan jangkauan pasar Batik Lestari ke tingkat nasional melalui kampanye iklan Meta & Google yang efektif, menghasilkan ROI 5x lipat." data-img="https://placehold.co/600x400/8B0000/FFFFFF?text=Batik+Lestari">
+                    <div class="relative rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://placehold.co/600x400/8B0000/FFFFFF?text=Batik+Lestari" alt="Portfolio Batik Lestari" class="w-full h-60 object-cover transform group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <p class="text-white text-lg font-bold">Lihat Detail</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Batik Lestari</h3>
+                    <p class="text-gray-500">Digital Marketing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 bg-gray-50 fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-3">Investasi Terbaik untuk Bisnis Anda</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">Paket transparan yang dirancang untuk bertumbuh bersama Anda. Bukan biaya, tapi modal.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Paket 1: Starter -->
+                <div class="bg-white p-8 rounded-xl shadow-md border flex flex-col card-hover">
+                    <h3 class="text-xl font-semibold mb-2">UMKM Starter</h3>
+                    <p class="text-gray-500 mb-4">Untuk memulai jejak digital.</p>
+                    <p class="text-4xl font-bold mb-4">Rp1jt+</p>
+                    <ul class="text-left space-y-3 text-gray-600 mb-8 flex-grow">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Website Landing Page</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Desain Responsif</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Basic SEO Setup</li>
+                    </ul>
+                    <a href="#contact-form" class="mt-auto w-full bg-gray-200 text-gray-800 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">Pilih Paket</a>
+                </div>
+                <!-- Paket 2: Business (Popular) -->
+                <div class="bg-white p-8 rounded-xl shadow-xl border-2 border-[#FF6600] relative flex flex-col card-hover">
+                    <span class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-[#FF6600] text-white text-sm font-bold px-4 py-1 rounded-full">Paling Populer</span>
+                    <h3 class="text-xl font-semibold mb-2">Business Growth</h3>
+                    <p class="text-gray-500 mb-4">Untuk akselerasi pertumbuhan.</p>
+                    <p class="text-4xl font-bold mb-4">Rp5jt+</p>
+                    <ul class="text-left space-y-3 text-gray-600 mb-8 flex-grow">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Semua di Starter</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Website Multi-halaman</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Manajemen Iklan Digital</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Laporan Performa</li>
+                    </ul>
+                    <a href="#contact-form" class="mt-auto w-full bg-[#FF6600] text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">Pilih Paket</a>
+                </div>
+                <!-- Paket 3: Enterprise -->
+                <div class="bg-white p-8 rounded-xl shadow-md border flex flex-col card-hover">
+                    <h3 class="text-xl font-semibold mb-2">Enterprise</h3>
+                    <p class="text-gray-500 mb-4">Solusi custom & terintegrasi.</p>
+                    <p class="text-4xl font-bold mb-4">Custom</p>
+                    <ul class="text-left space-y-3 text-gray-600 mb-8 flex-grow">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Semua di Business</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Software / Aplikasi Custom</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Dukungan Prioritas</li>
+                    </ul>
+                    <a href="#contact-form" class="mt-auto w-full bg-gray-200 text-gray-800 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emotional Social Proof -->
+    <section class="py-20 bg-white fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Apa Kata Mereka Tentang Kami?</h2>
+            <div class="max-w-3xl mx-auto bg-gray-100 p-8 rounded-xl shadow-inner">
+                <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+                    <iframe 
+                        src="https://www.youtube.com/embed/QKfCRouiWV4" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        class="w-full h-full">
+                    </iframe>
+                </div>
+            </div>
+            <div id="stats" class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <p class="text-4xl font-bold text-[#FF6600]"><span class="counter" data-target="500">0</span>+</p>
+                    <p class="text-gray-600">Website Dibuat</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl font-bold text-[#FF6600]">Rp<span class="counter" data-target="2">0</span>M+</p>
+                    <p class="text-gray-600">Ads Spend Dikelola</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl font-bold text-[#FF6600]"><span class="counter" data-target="98">0</span>%</p>
+                    <p class="text-gray-600">Kepuasan Klien</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl font-bold text-[#FF6600]"><span class="counter" data-target="100">0</span>+</p>
+                    <p class="text-gray-600">Bisnis Dibantu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Limited Time Offer -->
+    <div id="offer-banner" class="sticky bottom-0 bg-[#FF6600] text-white py-3 text-center z-40">
+        <p><strong>Promo Growth Accelerator:</strong> Diskon 20% Berakhir Dalam: <span id="countdown" class="font-bold"></span></p>
+    </div>
+
+    <!-- Bonus Stack -->
+    <section class="py-20 bg-gray-50 fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Gabung Sekarang & Dapatkan Bonus Eksklusif!</h2>
+            <p class="text-lg text-gray-600 mb-8">(Senilai Rp2.500.000)</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+                <div class="bg-white p-4 rounded-lg shadow-sm flex items-center card-hover"><svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Free Konsultasi Strategi Digital 2x</div>
+                <div class="bg-white p-4 rounded-lg shadow-sm flex items-center card-hover"><svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Free Trial Tools Premium 14 Hari</div>
+                <div class="bg-white p-4 rounded-lg shadow-sm flex items-center card-hover"><svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Free Maintenance Website 1 Bulan</div>
+                <div class="bg-white p-4 rounded-lg shadow-sm flex items-center card-hover"><svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Free Ebook "Checklist Bisnis Digital"</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conversion Form -->
+    <section id="contact-form" class="py-20 bg-white fade-in-section">
+        <div class="container mx-auto px-6 max-w-lg">
+            <div class="bg-white p-8 rounded-xl shadow-lg border card-hover">
+                <h2 class="text-2xl font-bold mb-2 text-center">Ambil Langkah Pertama Anda</h2>
+                <p class="text-gray-600 mb-6 text-center">Isi form di bawah untuk mendapatkan proposal & konsultasi gratis via WhatsApp.</p>
+                <form onsubmit="return sendWA(event)" class="space-y-4">
+                    <input type="text" id="form-name" placeholder="Nama Anda" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition">
+                    <input type="tel" id="form-phone" placeholder="Nomor WhatsApp (cth: 0812...)" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition">
+                    <select id="form-service" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition">
+                        <option value="">Pilih Layanan yang Diminati</option>
+                        <option value="Website">Pembuatan Website</option>
+                        <option value="Marketing">Digital Marketing</option>
+                        <option value="Tools">Tools & Software</option>
+                        <option value="Lainnya">Konsultasi Lainnya</option>
+                    </select>
+                    <button type="submit" class="w-full bg-[#FF6600] text-white py-3 rounded-lg font-semibold text-lg hover:bg-opacity-90 transform hover:scale-105 transition-all">Kirim & Konsultasi via WA</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="finalcta" class="py-20 bg-gradient-to-r from-[#001F3F] to-[#003366] text-white text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Bisnis Anda Siap Bertumbuh? <br> Kami Siap Membantu.</h2>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">Jangan tunda kesuksesan Anda. Mari diskusikan bagaimana kami bisa membantu mencapai target bisnis Anda.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                 <a href="#contact-form" class="bg-[#FF6600] text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transform hover:scale-105 transition-all w-full sm:w-auto animate-pulse-bright">Mulai Konsultasi Gratis</a>
+                 <a href="#pricing" class="border-2 border-white px-8 py-3 rounded-lg hover:bg-white hover:text-[#FF6600] transition-colors w-full sm:w-auto">Lihat Paket Layanan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Kolom 1: Logo & Tagline -->
+                <div class="col-span-1 md:col-span-2">
+                    <a href="#" class="flex items-center mb-4">
+                        <img src="/assets/logo.png" alt="Logo Kami Kreatif" class="h-10 mr-3" onerror="this.style.display='none'">
+                        <span class="text-2xl font-bold text-[#001F3F]">Kami Kreatif</span>
+                    </a>
+                    <p class="text-gray-500 max-w-sm">Solusi digital berbasis empati untuk membantu UMKM dan bisnis bertumbuh di era digital.</p>
+                </div>
+
+                <!-- Kolom 2: Navigasi Cepat -->
+                <div>
+                    <h3 class="font-bold mb-4">Navigasi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-500 hover:text-[#FF6600]">Layanan</a></li>
+                        <li><a href="#portfolio" class="text-gray-500 hover:text-[#FF6600]">Portfolio</a></li>
+                        <li><a href="#pricing" class="text-gray-500 hover:text-[#FF6600]">Harga</a></li>
+                        <li><a href="#contact-form" class="text-gray-500 hover:text-[#FF6600]">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3: Kontak & Sosial Media -->
+                <div>
+                    <h3 class="font-bold mb-4">Hubungi Kami</h3>
+                    <ul class="space-y-2 text-gray-500">
+                        <li><a href="mailto:halo@kamikreatif.com" class="hover:text-[#FF6600]">halo@kamikreatif.com</a></li>
+                        <li><a href="https://wa.me/6287727519535" class="hover:text-[#FF6600]">+62 877-2751-9535</a></li>
+                    </ul>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" target="_blank" class="text-gray-400 hover:text-[#FF6600]"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" target="_blank" class="text-gray-400 hover:text-[#FF6600]"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-6 text-center text-sm text-gray-500">
+                <p>&copy; 2015 - 2025 Kami Kreatif. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Portfolio Modal -->
+    <div id="portfolio-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-[101] flex items-center justify-center p-4">
+        <div id="modal-content" class="bg-white rounded-lg max-w-2xl w-full p-8 relative transform scale-95 transition-transform duration-300">
+            <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-500 hover:text-black">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <img id="modal-img" src="" alt="Portfolio Detail" class="w-full h-64 object-cover rounded-lg mb-4">
+            <h3 id="modal-title" class="text-2xl font-bold mb-2"></h3>
+            <p id="modal-desc" class="text-gray-600"></p>
+        </div>
+    </div>
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // --- Inisialisasi Semua Fungsi ---
+        initMobileMenu();
+        initNavbarScroll();
+        initCountdown();
+        initScrollAnimations();
+        initCounters();
+        initActiveNavOnScroll();
+        initPortfolioModal();
+        initWhatsAppForm();
+    });
+
+    // --- Fungsi untuk Menu Mobile ---
+    function initMobileMenu() {
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const openIcon = document.getElementById('menu-open-icon');
+        const closeIcon = document.getElementById('menu-close-icon');
+        const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+        const toggleMenu = () => {
+            const isActive = mobileMenu.classList.contains('active');
+            mobileMenu.classList.toggle('active', !isActive);
+            overlay.classList.toggle('hidden', isActive);
+            openIcon.classList.toggle('hidden', !isActive);
+            closeIcon.classList.toggle('hidden', isActive);
+            document.body.classList.toggle('overflow-hidden', !isActive);
+        };
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+        navLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    }
+    
+    // --- Fungsi untuk Efek Navigasi saat Scroll ---
+    function initNavbarScroll() {
+        const nav = document.getElementById('main-nav');
+        const navContainer = nav.querySelector('.container');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+                navContainer.style.paddingTop = '0.5rem';
+                navContainer.style.paddingBottom = '0.5rem';
+            } else {
+                nav.classList.remove('shadow-lg');
+                navContainer.style.paddingTop = '1rem';
+                navContainer.style.paddingBottom = '1rem';
+            }
+        });
+    }
+
+    // --- Fungsi untuk Hitung Mundur Promo ---
+    function initCountdown() {
+        const countdownEl = document.getElementById('countdown');
+        if (!countdownEl) return;
+        const endTime = new Date().getTime() + 48 * 60 * 60 * 1000;
+
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = endTime - now;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                countdownEl.innerText = 'Promo Berakhir';
+                document.getElementById('offer-banner').style.display = 'none';
+                return;
+            }
+
+            const hours = Math.floor(distance / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownEl.innerText = `${hours}j ${minutes}m ${seconds}s`;
+        }, 1000);
+    }
+
+    // --- Fungsi untuk Animasi saat Scroll ---
+    function initScrollAnimations() {
+        const sections = document.querySelectorAll('.fade-in-section');
+        if (sections.length === 0) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    }
+    
+    // --- Fungsi untuk Animasi Counter Angka ---
+    function initCounters() {
+        const statsSection = document.getElementById('stats');
+        if (!statsSection) return;
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        let current = 0;
+                        const duration = 2000; // 2 detik
+                        const stepTime = Math.abs(Math.floor(duration / target));
+                        
+                        const timer = setInterval(() => {
+                            current += 1;
+                            counter.innerText = current;
+                            if (current == target) {
+                                clearInterval(timer);
+                            }
+                        }, stepTime);
+                    });
+                    observer.unobserve(entry.target); // Hanya jalankan sekali
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
+    }
+
+    // --- Fungsi untuk Navigasi Aktif saat Scroll ---
+    function initActiveNavOnScroll() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-50% 0px -50% 0px' });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    }
+
+    // --- Fungsi untuk Modal Portfolio ---
+    function initPortfolioModal() {
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const modal = document.getElementById('portfolio-modal');
+        const modalContent = document.getElementById('modal-content');
+        const closeBtn = document.getElementById('modal-close-btn');
+        
+        if(!modal) return;
+
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('modal-title').textContent = item.dataset.title;
+                document.getElementById('modal-desc').textContent = item.dataset.desc;
+                document.getElementById('modal-img').src = item.dataset.img;
+                
+                modal.classList.remove('hidden');
+                setTimeout(() => modalContent.classList.add('scale-100'), 10);
+            });
+        });
+
+        const closeModal = () => {
+            modalContent.classList.remove('scale-100');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    }
+
+    // --- Fungsi untuk Form WhatsApp ---
+    function initWhatsAppForm() {
+        // Fungsi `sendWA` sudah global dan siap pakai.
+    }
+
+    function sendWA(e) {
+        e.preventDefault();
+        const name = document.getElementById('form-name').value;
+        const phone = document.getElementById('form-phone').value;
+        const service = document.getElementById('form-service').value;
+        const waNumber = '6287727519535'; 
+        const message = `Halo Kami Kreatif! Saya ${name}, ingin konsultasi tentang layanan *${service}*. Mohon informasinya. Nomor WhatsApp saya: ${phone}`;
+        const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+        window.open(waURL, '_blank');
+        return false;
+    }
+    </script>
+</body>
+</html>
